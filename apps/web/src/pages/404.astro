@@ -1,0 +1,18 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="404">
+  <h1 class="text-6xl mt-8 mb-16">404: Page not found</h1>
+  <article class="flex-row gap-4">
+    <button
+      onclick="
+      history.back()
+      "
+      class="highlight px-2 pt-2 pb-2.5"
+    >
+      Previous page
+    </button>
+    <a href="/" class="highlight px-2 pt-2 pb-2.5">Homepage</a>
+  </article>
+</MainLayout>
