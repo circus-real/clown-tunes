@@ -1,0 +1,22 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import "../global.css";
+
+interface Props {
+  description?: string;
+}
+
+const { description = "music server for true clowns" } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead />
+    <meta name="description" content={description} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

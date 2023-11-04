@@ -1,0 +1,21 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  hideExt?: boolean;
+  description?: string;
+}
+
+const { title, description, hideExt } = Astro.props as Props;
+---
+
+<BaseLayout {description}>
+  <Fragment slot="head">
+    <title>{title}{!hideExt && " - clown-tunes"}</title>
+    <slot name="head" />
+  </Fragment>
+  <main>
+    <slot />
+  </main>
+</BaseLayout>
