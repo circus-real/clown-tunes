@@ -1,4 +1,50 @@
-body {
-  background-color: #1a1a1a; /* set the background color to a dark color */
-  color: #fff; /* set the text color to white */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: clamp(16px, calc(1rem + ((1vw - 7.68px) * 0.6944)), 32px);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    @apply p-4 bg-neutral-900 text-neutral-300 min-h-screen;
+  }
+  code {
+    @apply font-mono;
+    @apply bg-neutral-700 rounded-md px-1 py-0.5;
+  }
+  a {
+    @apply font-semibold text-blue-600 hover:text-blue-500;
+  }
+  p {
+    @apply max-w-prose;
+  }
+  h1 {
+    @apply font-bold text-4xl;
+  }
+  h2,
+  h3 {
+    @apply font-semibold text-2xl;
+  }
+  article {
+    @apply my-6 flex flex-col justify-center items-center;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 pb-2 pt-1.5 rounded-lg bg-neutral-700;
+  }
+  .highlight {
+    @apply font-semibold text-emerald-400;
+    @apply shadow-lg bg-emerald-700/30 shadow-emerald-700/30 rounded-md px-1;
+  }
+  .semiwide {
+    @apply max-w-[80ch];
+  }
+  .wide {
+    @apply max-w-[100ch];
+  }
 }

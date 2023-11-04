@@ -15,7 +15,7 @@ const { title, description, hideExt } = Astro.props as Props;
     <title>{title}{!hideExt && " - clown-tunes"}</title>
     <slot name="head" />
   </Fragment>
-  <main>
+  <main class="text-center">
     <slot />
   </main>
 </BaseLayout>
