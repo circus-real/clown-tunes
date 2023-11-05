@@ -38,7 +38,7 @@
     @apply px-4 pb-2 pt-1.5 rounded-lg bg-neutral-700;
   }
   .highlight {
-    @apply font-semibold text-emerald-400;
+    @apply font-semibold text-emerald-400 hover:text-emerald-500;
     @apply shadow-lg bg-emerald-700/30 shadow-emerald-700/30 rounded-md px-1;
   }
   .semiwide {
