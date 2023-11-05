@@ -43,11 +43,5 @@ export async function getSongs(artist: string, album: string) {
 }
 
 export async function getSong(artist: string, album: string, songPath: string) {
-  const songs: { name: string; path: string }[] = (
-    await getSongs(artist, album)
-  ).map((song) => ({
-    name: song.name,
-    path: song.path.replace(/ /g, "%20"),
-  }));
-  return songs.find((song) => song.path === songPath);
+  return (await getSongs(artist, album)).find((song) => song.path === songPath);
 }
