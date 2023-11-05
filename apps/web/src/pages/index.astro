@@ -1,8 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { getArtists } from "../utils";
+
+const artists = await getArtists();
 ---
 
 <MainLayout title="Home">
   <h1>clown-tunes</h1>
-  <p>music server for the clowns in your life</p>
+  <article>
+    {artists.map((artistName) => <a href={`/${artistName}`}>{artistName}</a>)}
+  </article>
 </MainLayout>

@@ -12,7 +12,7 @@ const { title, description, hideExt } = Astro.props as Props;
 
 <BaseLayout {description}>
   <Fragment slot="head">
-    <title>{title}{!hideExt && " - clown-tunes"}</title>
+    <title>{title}{!hideExt && " · clown-tunes"}</title>
     <slot name="head" />
   </Fragment>
   <main class="text-center">

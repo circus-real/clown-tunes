@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getAlbums, getArtists } from "../../utils";
+
+const { artist } = Astro.params as { artist: string };
+
+if (!(await getArtists()).includes(artist)) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+
+const albums = await getAlbums(artist);
+---
+
+<MainLayout title={artist}>
+  <h1>{artist}'s albums</h1>
+  <article>
+    {albums.map((album) => <a href={`/${artist}/${album}`}>{album}</a>)}
+  </article>
+</MainLayout>

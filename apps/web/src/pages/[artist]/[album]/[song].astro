@@ -1,0 +1,31 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import { getAlbums, getArtists, getSongs } from "../../../utils";
+
+const { artist, album, song } = Astro.params as {
+  artist: string;
+  album: string;
+  song: string;
+};
+
+if (
+  !(await getArtists()).includes(artist) ||
+  !(await getAlbums(artist)).includes(album) ||
+  !(await getSongs(artist, album)).includes(song)
+) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+
+const songSrc = `http://atomic123.pythonanywhere.com/music/${artist}/${album}/${song}`;
+---
+
+<MainLayout title={song}>
+  <h1>{song}</h1>
+  <article>
+    <p>in {album} by {artist}</p>
+    <audio controls autoplay src={songSrc}></audio>
+  </article>
+</MainLayout>
