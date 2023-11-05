@@ -29,7 +29,7 @@ export async function getAlbums(artist: string) {
 }
 
 export async function getSongs(artist: string, album: string) {
-  const songs: { name: string }[] = await fetch(
+  const songs: { name: string; path: string }[] = await fetch(
     `http://atomic123.pythonanywhere.com/music/.cal_sonic_library/songs/${artist}_${album}_songs.json`,
     {
       headers: {
@@ -38,7 +38,16 @@ export async function getSongs(artist: string, album: string) {
     }
   ).then((res) => res.json());
   return songs
-    .filter((song) => !song.name.startsWith(".cal_sonic_library"))
-    .sort((a, b) => (a.name > b.name ? 1 : -1))
-    .map((song) => song.name);
+    .filter((song) => !song.path.startsWith(".cal_sonic_library"))
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
+}
+
+export async function getSong(artist: string, album: string, songPath: string) {
+  const songs: { name: string; path: string }[] = (
+    await getSongs(artist, album)
+  ).map((song) => ({
+    name: song.name,
+    path: song.path.replace(/ /g, "%20"),
+  }));
+  return songs.find((song) => song.path === songPath);
 }

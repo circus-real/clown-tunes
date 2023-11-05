@@ -20,6 +20,10 @@ const songs = await getSongs(artist, album);
 <MainLayout title={album}>
   <h1>{artist} - {album}</h1>
   <article>
-    {songs.map((song) => <a href={`/${artist}/${album}/${song}`}>{song}</a>)}
+    {
+      songs.map((song) => (
+        <a href={`/${artist}/${album}/${song.path}`}>{song.name}</a>
+      ))
+    }
   </article>
 </MainLayout>
