@@ -1,6 +1,6 @@
 export async function getArtists() {
   const artists: { name: string }[] = await fetch(
-    "https://atomic123.pythonanywhere.com/music/.cal_sonic_library/meta/artists.json",
+    "https://atomic123.pythonanywhere.com/music/.cal/meta/artists.json",
     {
       headers: {
         "Content-Type": "application/json",
@@ -8,14 +8,14 @@ export async function getArtists() {
     }
   ).then((res) => res.json());
   return artists
-    .filter((artist) => !artist.name.startsWith(".cal_sonic_library"))
+    .filter((artist) => !artist.name.startsWith(".cal"))
     .sort((a, b) => (a.name > b.name ? 1 : -1))
     .map((artist) => artist.name);
 }
 
 export async function getAlbums(artist: string) {
   const albums: { name: string }[] = await fetch(
-    `https://atomic123.pythonanywhere.com/music/.cal_sonic_library/albums/${artist}_albums.json`,
+    `https://atomic123.pythonanywhere.com/music/.cal/albums/${artist}_albums.json`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -23,14 +23,14 @@ export async function getAlbums(artist: string) {
     }
   ).then((res) => res.json());
   return albums
-    .filter((album) => !album.name.startsWith(".cal_sonic_library"))
+    .filter((album) => !album.name.startsWith(".cal"))
     .sort((a, b) => (a.name > b.name ? 1 : -1))
     .map((album) => album.name);
 }
 
 export async function getSongs(artist: string, album: string) {
   const songs: { name: string; path: string }[] = await fetch(
-    `https://atomic123.pythonanywhere.com/music/.cal_sonic_library/songs/${artist}_${album}_songs.json`,
+    `https://atomic123.pythonanywhere.com/music/.cal/songs/${artist}_${album}_songs.json`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export async function getSongs(artist: string, album: string) {
     }
   ).then((res) => res.json());
   return songs
-    .filter((song) => !song.path.startsWith(".cal_sonic_library"))
+    .filter((song) => !song.path.startsWith(".cal"))
     .sort((a, b) => (a.name > b.name ? 1 : -1));
 }
 
