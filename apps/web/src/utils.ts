@@ -1,6 +1,6 @@
 export async function getArtists() {
   const artists: { name: string }[] = await fetch(
-    "https://atomic123.pythonanywhere.com/music/.cal/meta/artists.json",
+    "https://supersonic.software/music/.cal/meta/artists.json",
     {
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export async function getArtists() {
 
 export async function getAlbums(artist: string) {
   const albums: { name: string }[] = await fetch(
-    `https://atomic123.pythonanywhere.com/music/.cal/albums/${artist}_albums.json`,
+    `https://supersonic.software/music/.cal/albums/${artist}_albums.json`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export async function getAlbums(artist: string) {
 
 export async function getSongs(artist: string, album: string) {
   const songs: { name: string; path: string }[] = await fetch(
-    `https://atomic123.pythonanywhere.com/music/.cal/songs/${artist}_${album}_songs.json`,
+    `https://supersonic.software/music/.cal/songs/${artist}_${album}_songs.json`,
     {
       headers: {
         "Content-Type": "application/json",
