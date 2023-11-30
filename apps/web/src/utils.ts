@@ -1,4 +1,4 @@
-const base: string = "https://supersonic.software/music"
+export const base: string = "https://supersonic.software/music";
 
 export async function getArtists() {
   const artists: { name: string }[] = await fetch(

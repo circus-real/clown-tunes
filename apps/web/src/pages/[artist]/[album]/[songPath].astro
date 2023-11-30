@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../../../layouts/MainLayout.astro";
-import { getAlbums, getArtists, getSong } from "../../../utils";
+import { base, getAlbums, getArtists, getSong } from "../../../utils";
 
 const { artist, album, songPath } = Astro.params as {
   artist: string;
@@ -20,7 +20,7 @@ if (
   });
 }
 
-const src = `https://supersonic.software/music/${artist}/${album}/${song.path}`;
+const src = `${base}/${artist}/${album}/${song.path}`;
 ---
 
 <MainLayout title={song.name}>
